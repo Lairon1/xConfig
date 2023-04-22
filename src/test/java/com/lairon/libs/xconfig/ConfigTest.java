@@ -24,9 +24,9 @@ class ConfigTest {
 
         Map<String, Object> data = mcf.getData();
 
-        Assert.assertEquals(data.get("Settings.TestMMessageString"), "testMMessageeee");
-        Assert.assertEquals(data.get("Settings.TestNumber"), 11.5123f);
-        Assert.assertEquals(data.get("Settings.deepConf.deeeeeeep"), "dip");
+        Assert.assertEquals("testMMessageeee", data.get("Settings.TestMMessageString"));
+        Assert.assertEquals(11.5123f, data.get("Settings.TestNumber"));
+        Assert.assertEquals("dip", data.get("Settings.deepConf.deeeeeeep"));
 
         path.delete();
     }

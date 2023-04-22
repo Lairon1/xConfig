@@ -2,9 +2,11 @@ package com.lairon.libs.xconfig;
 
 import com.lairon.libs.xconfig.configfile.impl.MemoryConfigFile;
 import com.lairon.libs.xconfig.configs.SettingsConfig;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.util.Map;
 
 
 class ConfigTest {
@@ -19,7 +21,12 @@ class ConfigTest {
         config.reload();
 
         MemoryConfigFile mcf = (MemoryConfigFile) config.getConfig();
-        mcf.getData().forEach((s, o) -> System.out.println(s + ": " + o));
+
+        Map<String, Object> data = mcf.getData();
+
+        Assert.assertEquals(data.get("Settings.TestMMessageString"), "testMMessageeee");
+        Assert.assertEquals(data.get("Settings.TestNumber"), 11.5123f);
+        Assert.assertEquals(data.get("Settings.deepConf.deeeeeeep"), "dip");
 
         path.delete();
     }
